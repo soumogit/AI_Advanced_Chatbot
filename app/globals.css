@@ -1,0 +1,301 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+}
+
+.prose ul {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.prose hr {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.dark .prose hr {
+  border-color: rgba(75, 85, 99, 0.3);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: #d1d5db;
+    border-radius: 2px;
+  }
+
+  .dark .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: #4b5563;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 217 32% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 32% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 217 32% 17%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 32% 17%;
+    --input: 217 32% 17%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #d1d5db;
+  border-radius: 3px;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #4b5563;
+}
+
+/* Dark mode prose overrides */
+.dark .prose {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.dark .prose strong {
+  color: white;
+}
+
+.dark .prose a {
+  color: #38bdf8;
+}
+
+.dark .prose h1,
+.dark .prose h2,
+.dark .prose h3,
+.dark .prose h4,
+.dark .prose h5,
+.dark .prose h6 {
+  color: white;
+}
+
+.dark .prose code {
+  color: #38bdf8;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.dark .prose blockquote {
+  color: rgba(255, 255, 255, 0.8);
+  border-color: rgba(75, 85, 99, 0.5);
+}
+
+.dark .prose ul > li::before {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.dark .prose ol > li::before {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Improved list styling for medical sections */
+.prose ul.list-none {
+  padding-left: 0;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose ul.list-none li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+  padding-left: 0;
+}
+
+.prose ul.list-none li:before {
+  display: none;
+}
+
+.prose h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose h3 + ul {
+  margin-top: 0.5rem;
+}
+
+/* Patient info styling */
+.prose .space-y-2 > p {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1.75;
+}
+
+/* Range slider styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  border-radius: 4px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #14b8a6;
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.dark input[type="range"]::-webkit-slider-thumb {
+  background: #2dd4bf;
+  border: 2px solid #1f2937;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #14b8a6;
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.dark input[type="range"]::-moz-range-thumb {
+  background: #2dd4bf;
+  border: 2px solid #1f2937;
+}
+
+/* Emergency alert styling */
+.emergency-alert {
+  border-left: 4px solid #ef4444;
+  padding-left: 1rem;
+}
+
+/* Transition effects */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+/* Button hover effects */
+button:not(:disabled):hover {
+  transform: translateY(-1px);
+}
+
+button:not(:disabled):active {
+  transform: translateY(0);
+}
+
+/* Symptom highlighting */
+.symptom-highlight {
+  background-color: rgba(252, 211, 77, 0.3);
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+.dark .symptom-highlight {
+  background-color: rgba(252, 211, 77, 0.15);
+}
